@@ -8,7 +8,9 @@ const InboxContent = () => {
 
   const fetchInboxData = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/emails');
+      const response = await fetch(
+        'https://capstone-backend-olmw.onrender.com/api/emails'
+      );
       const data = await response.json();
       setInboxData(data);
     } catch (error) {
@@ -70,13 +72,16 @@ const ComposeModal = ({ onClose }) => {
         body,
       });
 
-      const response = await fetch('http://localhost:3001/api/emails', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body:postBodyData,
-      });
+      const response = await fetch(
+        'https://capstone-backend-olmw.onrender.com/api/emails',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: postBodyData,
+        }
+      );
       const data = await response.json();
       console.log('data', data);
       onClose();
